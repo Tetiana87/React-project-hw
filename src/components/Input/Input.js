@@ -1,24 +1,17 @@
 import "./Input.css";
 
-function Input() {
+const Input = ({ type, placeholder, value, onChange }) => {
   return (
     <div>
       <input
         className="Input"
-        type="text"
-        placeholder="User name"
-        id="contact-name"
-        name="username"
-      />
-      <input
-        className="Input"
-        type="password"
-        placeholder="Password"
-        id="pass"
-        name="password"
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
       />
     </div>
   );
-}
+};
 
 export default Input;
