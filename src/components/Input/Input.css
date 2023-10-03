@@ -1,0 +1,14 @@
+.Input {
+  flex-basis: 68%;
+  background: #d9d9d9;
+  border: 0;
+  outline: 0;
+  padding: 15px 60px;
+  margin-top: 40px;
+  color: #333;
+  font-size: 16px;
+}
+
+::placeholder {
+  color: #44b26f;
+}
