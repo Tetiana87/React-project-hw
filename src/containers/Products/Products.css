@@ -1,0 +1,42 @@
+.Products {
+  background-color: #44b26f;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100%;
+  padding: 20px 20px;
+  margin: 0 auto;
+}
+
+.Block-logo {
+  display: flex;
+  margin: 10px 0 20px 0px;
+}
+
+.Button-block {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px 0 40px;
+}
+
+.Block-icon {
+  position: relative;
+}
+
+.Icon-user,
+.Icon-plus {
+  fill: black;
+  position: absolute;
+  top: 25%;
+  right: 80%;
+  cursor: pointer;
+}
+
+.Title {
+  color: #ffffff;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 77px;
+  text-align: center;
+  margin-bottom: 40px;
+}
