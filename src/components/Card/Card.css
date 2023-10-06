@@ -7,3 +7,20 @@
   border-radius: 4px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
+
+.Icon-open-eye {
+  fill: #44b26f;
+  position: absolute;
+  top: 60%;
+  right: 20%;
+  cursor: pointer;
+}
+
+.Icon-close-eye {
+  display: none;
+  cursor: pointer;
+}
+
+.Block-input-icon {
+  position: relative;
+}

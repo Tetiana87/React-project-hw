@@ -1,0 +1,47 @@
+.product-table {
+  width: 70%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+}
+
+.even-row {
+  background: #d9d9d9;
+}
+
+.odd-row {
+  background: #3cd78c;
+  color: #a58f8f;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  border: none;
+}
+
+.product-table th {
+  background-color: #0ec86f;
+  border: none;
+}
+
+.Icon-trash {
+  fill: black;
+  cursor: pointer;
+}
+
+.Icon-pencil {
+  fill: black;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.Icon-arrow {
+  fill: #726969;
+  transform: rotate(90deg);
+  width: 20px;
+  height: 18px;
+  cursor: pointer;
+}
