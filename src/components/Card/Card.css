@@ -13,38 +13,31 @@
   font-size: 14px;
 }
 
-.Icon-open-eye {
-  fill: #44b26f;
-  position: absolute;
-  top: 60%;
-  right: 20%;
-  cursor: pointer;
-  font-size: 25px;
-}
-
-.Icon-close-eye {
-  display: none;
-  cursor: pointer;
-  font-size: 25px;
-}
-
 .Block-input-icon {
   position: relative;
 }
 
+.Icon-eye {
+  position: absolute;
+  top: 60%;
+  right: 100px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.Eye {
+  fill: #44b26f;
+}
+
 .error-message-pw {
-  /* color: red; */
   margin: 0px;
-  /* font-size: 14px; */
   position: absolute;
   top: 100%;
   right: 40%;
 }
 
 .error-message-login {
-  /* color: red; */
   margin: 0px;
-  /* font-size: 14px; */
   position: absolute;
   right: 47%;
 }
@@ -54,8 +47,6 @@
 }
 
 .error-message-invalid {
-  /* color: red; */
-  /* font-size: 14px; */
   position: absolute;
   top: 90%;
   right: 35%;

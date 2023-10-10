@@ -1,0 +1,74 @@
+.Cart {
+  width: 209px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: Inter;
+  font-weight: 500;
+}
+
+.Cart-image {
+  width: 100%;
+  height: auto;
+  max-height: 139px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.Cart-title {
+  margin: 0 0 20px 0;
+  color: #000000;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  padding: 0;
+  font-weight: 500;
+}
+
+.Price-quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+.Cart-price {
+  color: #fc5b00;
+  margin: 0;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.Cart-quantity {
+  margin: 0;
+  color: #000000;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.Send-block {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.Shop-send {
+  color: #05bc52;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.FaShoppingCart {
+  fill: #05bc52;
+  width: 28px;
+  height: 28px;
+  margin-right: 15px;
+}

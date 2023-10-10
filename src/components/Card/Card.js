@@ -12,6 +12,7 @@ function Card() {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleNameChange = (value) => {
     setName(value);
@@ -23,6 +24,10 @@ function Card() {
     setPassword(value);
     setPasswordError(value.trim().length > 0 ? "" : "Password cannot be empty");
     setErrorMessage("");
+  };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword); // Toggle password visibility state
   };
 
   const handleSubmit = async (e) => {
@@ -79,14 +84,21 @@ function Card() {
         </div>
         <div className="Block-input-icon">
           <Input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             value={password}
             onChange={handlePasswordChange}
           />
+          <span className="Icon-eye" onClick={handleTogglePassword}>
+            {showPassword ? (
+              <FaEyeSlash className="Eye" />
+            ) : (
+              <FaEye className="Eye" />
+            )}
+          </span>
           {passwordError && <p className="error-message-pw">{passwordError}</p>}
-          <FaEye className="Icon-open-eye" />
-          <FaEyeSlash className="Icon-open-eye Icon-close-eye" />
+          {/* <FaEye className="Icon-open-eye" />
+          <FaEyeSlash className="Icon-open-eye Icon-close-eye" /> */}
         </div>
         <div className="Block-btn">
           <Button text="Login" className="Button" />
