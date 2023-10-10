@@ -27,7 +27,7 @@ function Card() {
   };
 
   const handleTogglePassword = () => {
-    setShowPassword(!showPassword); // Toggle password visibility state
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (e) => {
@@ -97,8 +97,6 @@ function Card() {
             )}
           </span>
           {passwordError && <p className="error-message-pw">{passwordError}</p>}
-          {/* <FaEye className="Icon-open-eye" />
-          <FaEyeSlash className="Icon-open-eye Icon-close-eye" /> */}
         </div>
         <div className="Block-btn">
           <Button text="Login" className="Button" />
