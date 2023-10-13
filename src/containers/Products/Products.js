@@ -8,16 +8,28 @@ import React, { useState, useEffect } from "react";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://6525b61567cfb1e59ce7a0d3.mockapi.io/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => {
+    async function fetchProducts() {
+      try {
+        const response = await fetch(
+          "https://6525b61567cfb1e59ce7a0d3.mockapi.io/products"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setProducts(data);
+        } else {
+          console.error("Failed to fetch products");
+        }
+      } catch (error) {
         console.error("Error fetching products: ", error);
-      });
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
   }, []);
 
   return (
