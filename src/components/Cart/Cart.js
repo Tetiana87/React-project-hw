@@ -1,13 +1,19 @@
 import "./Cart.css";
 import { FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ product }) => {
-  const { image, title, price, quantity } = product;
+  const { id, image, name, price, quantity } = product;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/preview/${id}`);
+  };
 
   return (
-    <div className="Cart">
-      <img src={image} alt={title} className="Cart-image" />
-      <h2 className="Cart-title">{title}</h2>
+    <div className="Cart" onClick={handleClick}>
+      <img src={image} alt={name} className="Cart-image" />
+      <h2 className="Cart-title">{name}</h2>
       <div className="Price-quantity">
         <p className="Cart-price">${price}</p>
         <p className="Cart-quantity">Кількість: {quantity}</p>

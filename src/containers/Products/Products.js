@@ -5,10 +5,12 @@ import { FaRegUser } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import Table from "../../components/Table/Table";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -32,6 +34,10 @@ function Products() {
     fetchProducts();
   }, []);
 
+  const handlePreviewClick = () => {
+    navigate("/preview");
+  };
+
   return (
     <div className="Products">
       <div className="Block-logo">
@@ -39,7 +45,11 @@ function Products() {
       </div>
       <div className="Button-block">
         <div className="Block-icon">
-          <Button text="Preview" className="Button-products" />
+          <Button
+            text="Preview"
+            className="Button-products"
+            onClick={handlePreviewClick}
+          />
           <FaRegUser className="Icon-user" />
         </div>
         <div className="Block-icon">

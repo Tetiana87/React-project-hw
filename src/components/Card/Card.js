@@ -5,8 +5,10 @@ import Button from "../Button/Button";
 import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Card() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [nameError, setNameError] = useState("");
@@ -56,6 +58,7 @@ function Card() {
         const data = await response.json();
         if (data.token) {
           localStorage.setItem("token", data.token);
+          navigate("/products");
           console.log("Authentication successful");
         } else {
           setErrorMessage("Invalid token received from server");
