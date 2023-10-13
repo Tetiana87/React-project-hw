@@ -1,0 +1,20 @@
+.Preview {
+  background-color: #44b26f;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100%;
+  padding: 20px 20px;
+  margin: 0 auto;
+}
+
+.Block-logo {
+  display: flex;
+  margin: 10px 0 20px 0px;
+}
+
+.Cart-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
