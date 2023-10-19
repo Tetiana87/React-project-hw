@@ -1,0 +1,83 @@
+.Title-block {
+  display: flex;
+  align-items: center;
+}
+
+.FaArrowLeft {
+  width: 76px;
+  height: 60px;
+  fill: black;
+  cursor: pointer;
+}
+
+.Info-title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 39px;
+  color: black;
+  margin-left: 25px;
+}
+.Info-image {
+  max-height: 268px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.Info-block {
+  display: flex;
+  margin-top: 20px;
+  padding: 20px 20px;
+}
+
+.Main-info {
+  margin-left: 40px;
+}
+
+.Stock-block {
+  display: flex;
+  align-items: baseline;
+}
+
+.FaRegCheckCircle {
+  fill: #3cd78c;
+}
+
+.Stock-send {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 44px;
+  margin: 0 0 20px 5px;
+  color: #3cd78c;
+}
+
+.Info-price {
+  color: #fc5b00;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29px;
+  margin: 0 0 20px;
+}
+
+.Info-quantity {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  color: black;
+  margin: 0;
+}
+
+.Description-block {
+  padding: 20px 20px;
+}
+
+.Description-name-color {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 39px;
+  color: #d9d9d9;
+}
+
+.Description-text {
+  text-align: justify;
+}
