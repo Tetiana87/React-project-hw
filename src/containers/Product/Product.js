@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import logoProducts from "../../assets/logo-rozetka-products.svg";
 import Info from "../../components/Info/Info";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../../constans/url";
 
 function Product() {
   const { productId } = useParams();
@@ -12,9 +13,7 @@ function Product() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(
-          `https://6525b61567cfb1e59ce7a0d3.mockapi.io/products/${productId}`
-        );
+        const response = await fetch(`${API_URL}/${productId}`);
         if (response.ok) {
           const data = await response.json();
           setProduct(data);
