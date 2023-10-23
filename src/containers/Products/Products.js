@@ -6,6 +6,7 @@ import { FaPlus } from "react-icons/fa";
 import Table from "../../components/Table/Table";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../constans/url";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -15,9 +16,7 @@ function Products() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch(
-          "https://6525b61567cfb1e59ce7a0d3.mockapi.io/products"
-        );
+        const response = await fetch(API_URL);
         if (response.ok) {
           const data = await response.json();
           setProducts(data);
@@ -59,7 +58,7 @@ function Products() {
       </div>
       <div className="App">
         <h1 className="Title">Products</h1>
-        <Table products={products} />
+        <Table products={products} setProducts={setProducts} />
       </div>
     </div>
   );
