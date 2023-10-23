@@ -3,8 +3,7 @@ import "./Card.css";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import React, { useState } from "react";
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 function Card() {
