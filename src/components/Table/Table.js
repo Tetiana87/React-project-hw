@@ -1,14 +1,29 @@
 import "./Table.css";
-import { FaPencilAlt } from "react-icons/fa";
-import { FaTrashAlt } from "react-icons/fa";
-import { FaExchangeAlt } from "react-icons/fa";
+import { FaPencilAlt, FaTrashAlt, FaExchangeAlt } from "react-icons/fa";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import React, { useState } from "react";
 import { API_URL } from "../../constans/url";
+import ProductModal from "../ProductModal/ProductModal";
 
-const Table = ({ products, setProducts }) => {
+const Table = ({ products, setProducts, onEditClick }) => {
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
+
+  const handleEditClick = (product) => {
+    onEditClick(product);
+  };
+
+  const handleEditCancel = () => {
+    setShowEditModal(false);
+    setSelectedProduct(null);
+  };
+
+  const handleEditSubmit = (updatedProductData) => {
+    setShowEditModal(false);
+    setSelectedProduct(null);
+  };
 
   const handleDeleteClick = (productId) => {
     setSelectedProductId(productId);
@@ -76,7 +91,10 @@ const Table = ({ products, setProducts }) => {
               <td>{product.quantity}</td>
               <td>{product.price}</td>
               <td>
-                <FaPencilAlt className="Icon-pencil" />
+                <FaPencilAlt
+                  className="Icon-pencil"
+                  onClick={() => handleEditClick(product.id)}
+                />
                 <FaTrashAlt
                   className="Icon-trash"
                   onClick={() => handleDeleteClick(product.id)}
@@ -91,6 +109,14 @@ const Table = ({ products, setProducts }) => {
         <DeleteConfirmationModal
           onCancel={handleCancelDelete}
           onConfirm={handleConfirmDelete}
+        />
+      )}
+
+      {showEditModal && (
+        <ProductModal
+          product={selectedProduct}
+          onCancel={handleEditCancel}
+          onSubmit={handleEditSubmit}
         />
       )}
     </div>
