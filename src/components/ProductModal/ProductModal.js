@@ -10,6 +10,16 @@ const ProductModal = ({ product, onCancel, onSubmit, isEditing }) => {
     quantity: product.quantity || "",
     price: product.price || "",
     description: product.description || "",
+    image: product.image || "",
+  });
+
+  const [errors, setErrors] = useState({
+    category: false,
+    name: false,
+    quantity: false,
+    price: false,
+    description: false,
+    image: false,
   });
 
   const handleInputChange = (e) => {
@@ -18,11 +28,39 @@ const ProductModal = ({ product, onCancel, onSubmit, isEditing }) => {
       ...formData,
       [name]: value,
     });
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: value.trim() === "",
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+
+    const isEmpty = Object.values(formData).some(
+      (value) => value.trim() === ""
+    );
+    if (isEmpty) {
+      setErrors({
+        category: formData.category.trim() === "",
+        name: formData.name.trim() === "",
+        quantity: formData.quantity.trim() === "",
+        price: formData.price.trim() === "",
+        description: formData.description.trim() === "",
+        image: formData.image.trim() === "",
+      });
+    } else {
+      setErrors({
+        category: false,
+        name: false,
+        quantity: false,
+        price: false,
+        description: false,
+        image: false,
+      });
+      onSubmit(formData);
+    }
   };
 
   return (
@@ -38,45 +76,95 @@ const ProductModal = ({ product, onCancel, onSubmit, isEditing }) => {
           <label className="label-product">Category</label>
           <input
             type="text"
-            className="input-product"
+            className={`input-product ${errors.category ? "error-border" : ""}`}
             name="category"
             value={formData.category}
             onChange={handleInputChange}
           />
+          <div
+            className={`error-message-container ${
+              errors.category ? "" : "hidden"
+            }`}
+          >
+            <div className="error-message">This field is required</div>
+          </div>
           <label className="label-product">Name</label>
           <input
             type="text"
-            className="input-product"
+            className={`input-product ${errors.name ? "error-border" : ""}`}
             name="name"
             value={formData.name}
             onChange={handleInputChange}
           />
+          <div
+            className={`error-message-container ${errors.name ? "" : "hidden"}`}
+          >
+            <div className="error-message">This field is required</div>
+          </div>
           <label className="label-product">Quantity</label>
           <input
             type="number"
-            className="input-product"
+            className={`input-product ${errors.quantity ? "error-border" : ""}`}
             name="quantity"
             value={formData.quantity}
             onChange={handleInputChange}
           />
+          <div
+            className={`error-message-container ${
+              errors.quantity ? "" : "hidden"
+            }`}
+          >
+            <div className="error-message">This field is required</div>
+          </div>
           <label className="label-product">Price</label>
           <input
             type="text"
-            className="input-product"
+            className={`input-product ${errors.price ? "error-border" : ""}`}
             name="price"
             value={formData.price}
             onChange={handleInputChange}
           />
+          <div
+            className={`error-message-container ${
+              errors.price ? "" : "hidden"
+            }`}
+          >
+            <div className="error-message">This field is required</div>
+          </div>
+          <label className="label-product">Image URL</label>
+          <input
+            type="text"
+            className={`input-product ${errors.image ? "error-border" : ""}`}
+            name="image"
+            value={formData.image}
+            onChange={handleInputChange}
+          />
+          <div
+            className={`error-message-container ${
+              errors.image ? "" : "hidden"
+            }`}
+          >
+            <div className="error-message">This field is required</div>
+          </div>
           <label className="label-product">Description</label>
           <textarea
             name="description"
-            className="textarea-product"
+            className={`textarea-product ${
+              errors.description ? "error-border" : ""
+            }`}
             value={formData.description}
             onChange={handleInputChange}
             id="description"
             cols="30"
             rows="4"
           ></textarea>
+          <div
+            className={`error-message-container ${
+              errors.description ? "" : "hidden"
+            }`}
+          >
+            <div className="error-message">This field is required</div>
+          </div>
           <div className="modal-product-buttons">
             <Button
               text="Cancel"
@@ -85,9 +173,11 @@ const ProductModal = ({ product, onCancel, onSubmit, isEditing }) => {
             />
             <Button
               text="Submit"
-              className="modal-product-button-submit"
+              className={`modal-product-button-submit ${
+                Object.values(errors).some((error) => error) ? "disabled" : ""
+              }`}
               type="submit"
-              onClick={onSubmit}
+              disabled={Object.values(errors).some((error) => error)}
             />
           </div>
         </form>

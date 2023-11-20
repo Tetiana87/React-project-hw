@@ -49,6 +49,7 @@ function Products() {
       quantity: "",
       price: "",
       description: "",
+      image: "",
     });
   };
 
@@ -68,14 +69,67 @@ function Products() {
     }
   };
 
+  const handleEditSubmit = async (updatedProductData) => {
+    try {
+      const response = await fetch(`${API_URL}/${selectedProduct.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedProductData),
+      });
+
+      if (response.ok) {
+        const getResponse = await fetch(API_URL);
+        if (getResponse.ok) {
+          const data = await getResponse.json();
+          setProducts(data);
+        } else {
+          console.error("Failed to fetch products after edit");
+        }
+      } else {
+        console.error("Failed to update product");
+      }
+    } catch (error) {
+      console.error("Error updating product: ", error);
+    } finally {
+      setShowProductModal(false);
+      setSelectedProduct(null);
+    }
+  };
+
   const handleProductModalCancel = () => {
     setShowProductModal(false);
     setSelectedProduct(null);
   };
 
-  const handleProductModalSubmit = (updatedProductData) => {
-    setShowProductModal(false);
-    setSelectedProduct(null);
+  const handleAddProductSubmit = async (newProductData) => {
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newProductData),
+      });
+
+      if (response.ok) {
+        const getResponse = await fetch(API_URL);
+        if (getResponse.ok) {
+          const data = await getResponse.json();
+          setProducts(data);
+        } else {
+          console.error("Failed to fetch products after add");
+        }
+      } else {
+        console.error("Failed to add new product");
+      }
+    } catch (error) {
+      console.error("Error adding new product: ", error);
+    } finally {
+      setShowProductModal(false);
+      setSelectedProduct(null);
+    }
   };
 
   return (
@@ -99,13 +153,17 @@ function Products() {
       </div>
       <div className="App">
         <h1 className="Title">Products</h1>
-        <Table products={products} onEditClick={handleEditClick} />
+        <Table
+          products={products}
+          setProducts={setProducts}
+          onEditClick={handleEditClick}
+        />
       </div>
       {showProductModal && (
         <ProductModal
           product={selectedProduct}
           onCancel={handleProductModalCancel}
-          onSubmit={handleProductModalSubmit}
+          onSubmit={isEditing ? handleEditSubmit : handleAddProductSubmit}
           isEditing={isEditing}
         />
       )}
